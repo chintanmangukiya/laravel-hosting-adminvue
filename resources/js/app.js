@@ -36,17 +36,11 @@ const i18n = new VueI18n({
     }
 })
 
-//Language
-// const lang = localStorage.getItem('lang') || 'en';
-// axios.defaults.baseURL = 'http://127.0.0.1:8000/';
-// axios.defaults.headers['Accept-Language'] = lang;
-
 //Component File
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('employee-index', require('./components/Employee/EmpListComponent.vue').default);
 Vue.component('user-profile', require('./components/UserProfile.vue').default);
-// i18n.global.locale = 'en'
-//
+
 const app = new Vue({
     i18n,
     el: '#app',

@@ -111,8 +111,10 @@
     }
 </i18n>
 <script>
+// import $ from "jquery"
+// import "datatables.net-dt/js/dataTables.dataTables.min.js"
+// import "datatables.net-dt/css/jquery.dataTables.min.css"
 // import Select2 from 'vue3-select2-component';
-// import DatatableFactory from 'vuejs-datatable';
 // import DatatableFactory from 'vuejs-datatable';
 export default {
     name: "EmployeeList",
@@ -124,42 +126,38 @@ export default {
             locale: 'en',
             lang : lang ,
             EmpList:[],
-            columns: [{
-                        label: 'id',
-                        field: 'id',
-                        align: 'center',
-                    },
-                    {
-                        label: 'title',
-                        field: 'first_name',
-                        align: 'center',
+            // columns: [{
+            //             label: 'id',
+            //             field: 'id',
+            //             align: 'center',
+            //         },
+            //         {
+            //             label: 'title',
+            //             field: 'first_name',
+            //             align: 'center',
 
-                    },
-                    {
-                        label: 'category',
-                        field: 'last_name',
-                        align: 'center',
+            //         },
+            //         {
+            //             label: 'category',
+            //             field: 'last_name',
+            //             align: 'center',
 
-                    },
-                    {
-                        label: 'description',
-                        field: 'phone_no',
-                        align: 'center',
+            //         },
+            //         {
+            //             label: 'description',
+            //             field: 'phone_no',
+            //             align: 'center',
 
-                    }
-                ],
-                rows: [],
-                page: 1,
-                filter: '',
-                perPage: 10,
+            //         }
+            // ],
+            // rows: [],
+            // page: 1,
+            // filter: '',
+            // perPage: 10,
         }
     },
     mounted() {
         this.getEmpList();
-        //  $(document).ready(function(){
-        //     var table = $('#myTable').DataTable();
-        //     table.draw(true);
-        // });
     },
     watch: {
             locale (val) {
@@ -174,10 +172,17 @@ export default {
                 .then(res => {
                     // this.rows = res.data;
                     this.EmpList = res.data;
-                    // $(document).ready(function(){
-                    //     var table = $('#myTable').DataTable();
-                    //     table.draw(true);
-                    // });
+                    setTimeout(() => {
+                        $(document).ready(function(){
+                            $('#myTable').DataTable({
+                                order: [[0, 'desc']],
+                                searching: true,
+                                paging: true,
+                                retrieve: true,
+                                destroy: true,
+                            });
+                        });
+                    }, 100);
                 })
                 .catch(error => {
                     console.log(error);
@@ -209,7 +214,7 @@ export default {
                     }
                 })
             } catch (error) {
-                console.log(error + 'dff' + "fdf");
+                console.log(error + 'dff');
             }
         },
         handleChange(e){
