@@ -1,0 +1,11 @@
+emp_id,Name,DOB,Designation,Country
+1,Ronaldo,12/12/2000,CEO,U.S.
+2,Messi,3/7/1992,CTO, 
+3,Robert,26/02/1992,Software Developer,
+4,Neymar,,Software Engineer,New Zealand
+5,Kevin,30/06/1988,Software Developer, 
+6,Erling,15/08/1978,Web Designer,U.S.
+7,Kylian,20/10/1975,Full Stack Developer,U.S.
+8,Trent,11/10/1998,Full Stack Developer,
+9,Luka,12/12/2002,Full Stack Mobile Developer,
+10,Dhruv,29/08/1981,Director,India
