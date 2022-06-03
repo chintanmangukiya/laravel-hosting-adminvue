@@ -40,6 +40,8 @@ const i18n = new VueI18n({
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('employee-index', require('./components/Employee/EmpListComponent.vue').default);
 Vue.component('user-profile', require('./components/UserProfile.vue').default);
+Vue.component('component-one', require('./components/componentone.vue').default);
+Vue.component('itemcomponent', require('./components/listview.vue').default);
 
 const app = new Vue({
     i18n,

@@ -6,6 +6,8 @@ import Employee from './components/Employee/EmpListComponent.vue'
 import EmployeeCreate from './components/Employee/EmpCreateComponent.vue'
 import EmployeeEdit from './components/Employee/EmpEditComponent.vue'
 import UserProfile from './components/UserProfile.vue'
+import test from './components/componentone.vue'
+import testDemo from './components/listview.vue'
 
 const routes = [
     {
@@ -27,6 +29,16 @@ const routes = [
         path:'/profile/:id',
         name:'UserProfile',
         component: UserProfile
+    },
+    {
+        path:'/test',
+        name:'test',
+        component: test
+    },
+    {
+        path:'/testDemo',
+        name:'testDemo',
+        component: testDemo
     },
 ]
 export default new Router({

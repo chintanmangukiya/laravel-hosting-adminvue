@@ -22,25 +22,19 @@
             <div >
                 <p v-if="lang == 'ar'">{{ $t('FirstName') }}</p>
             </div>
-            <ul>
-                <li @click="changeLanguage('en')">
-                    <a href="javascript:void(0);">
-                        <span>ENG</span>
-                    </a>
-                </li>
-                <li @click="changeLanguage('vn')">
-                    <a href="javascript:void(0);">
-                        <span>Việt</span>
-                    </a>
-                </li>
-            </ul>
-            {{ $t('word2') }}
+            <!-- <div >
+                <td class="task_user">{{item}}</td>
+            </div> -->
+            <component-one :secondValue.sync="input_two"></component-one>
+
             <!-- /row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="white-box">
                         <div style="text-align:right">
                             <router-link :to="{name: 'EmployeeCreate'}" class="btn btn-primary mb-3" v-b-tooltip.hover   title="Create Employee"> Create</router-link>
+                            <router-link :to="{name: 'test'}" class="btn btn-primary mb-3" v-b-tooltip.hover   title="Create list"> list</router-link>
+                            <router-link :to="{name: 'testDemo'}" class="btn btn-primary mb-3" v-b-tooltip.hover   title="Create list"> list Store</router-link>
                         </div>
                         <FlashMessage position="right top"></FlashMessage>
                         <div>
@@ -99,29 +93,26 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
-<i18n>
-    {
-        "en": {
-            "word2": "does this work?"
-        }
-    }
-</i18n>
+
+
 <script>
 // import $ from "jquery"
 // import "datatables.net-dt/js/dataTables.dataTables.min.js"
 // import "datatables.net-dt/css/jquery.dataTables.min.css"
 // import Select2 from 'vue3-select2-component';
 // import DatatableFactory from 'vuejs-datatable';
+// import {ComponentTwo } from '../componentone.vue'
 export default {
     name: "EmployeeList",
-   components: { },
+    // props: ['item'] ,
+   components: {  },
     data: function(){
         const lang = localStorage.getItem('lang') || 'en';
         return{
+            input_two: '',
             selected_language:'en',
             locale: 'en',
             lang : lang ,
@@ -162,7 +153,6 @@ export default {
     watch: {
             locale (val) {
                 this.$i18n.locale = val
-                console.log(val);
             }
     },
     methods: {
@@ -221,18 +211,6 @@ export default {
             localStorage.setItem('lang',e.target.value);
             // window.location.reload();
         },
-        changeLanguage(language){
-            axios.post('/change-locale',{language:language}).then(
-                (response) => {
-                    // window.location.reload();
-
-            }).catch((error) => {
-                console.log(error.response.data.errors)
-            });
-                localStorage.setItem('selected_language',language);
-            // console.log(localStorage.setItem('selected_language',language));
-            console.log(localStorage.setItem('selected_language',language));
-        }
     },
 }
 </script>

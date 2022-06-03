@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Demo;
 use App\Models\User;
 
 class EmployeeController extends Controller
@@ -121,6 +122,25 @@ class EmployeeController extends Controller
         }
         else{
             return response()->json('record not found', 200);
+        }
+    }
+
+
+    public function demoList(Request $request)
+    {
+        $demo =  Demo::get();
+        return response()->json($demo, 200);
+    }
+
+    public function demoStore(Request $request)
+    {
+        $demo = new Demo();
+        $demo->name = $request->input_two;
+
+        if($demo->save()){
+            return response()->json($demo, 200);
+        }else{
+            return response()->json($demo, 500);
         }
     }
 
